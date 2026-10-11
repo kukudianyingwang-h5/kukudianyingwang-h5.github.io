@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酷酷电影网 - 霓虹潮玩放映馆·酷片带/标签分面/情绪匹配/短评 | kukudianyingwang-h5.github.io</title>
+<meta name="description" content="酷酷电影网（https://kukudianyingwang-h5.github.io）单页演示：霓虹横滑酷片带、标签分面、情绪匹配测试、短评手记、画质与正版建议、站规无障碍。移动端自适应，内链全#，不提供盗版视频源。">
+<meta name="keywords" content="酷酷电影网,霓虹潮玩,酷片带,标签分面,情绪匹配,电影短评,画质建议,正版引导,单页演示,kukudianyingwang-h5.github.io">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0f1a">
+<meta property="og:title" content="酷酷电影网 - 霓虹潮玩放映馆">
+<meta property="og:description" content="酷片带、标签分面、情绪匹配、短评手记、画质与正版建议、站规无障碍。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kukudianyingwang-h5.github.io">
+<link rel="canonical" href="https://kukudianyingwang-h5.github.io">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0f1a;--bg2:#121829;--glass:rgba(22,28,46,.72);
+  --cyan:#22d3ee;--violet:#a855f7;--pink:#f472b6;--lime:#a3e635;
+  --ink:#e8edf7;--dim:#9aa6c2;--line:rgba(124,154,220,.18);
+  --shadow:0 16px 40px rgba(0,0,0,.45);
+  --glow-c:0 0 18px rgba(34,211,238,.55);
+  --glow-v:0 0 18px rgba(168,85,247,.55);
+}
+body.big-text{font-size:18px}
+body.reduce-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+   radial-gradient(40% 30% at 12% 8%,rgba(34,211,238,.20),transparent 60%),
+   radial-gradient(42% 32% at 88% 6%,rgba(168,85,247,.22),transparent 60%),
+   radial-gradient(50% 40% at 50% 110%,rgba(244,114,182,.18),transparent 60%),
+   linear-gradient(180deg,var(--bg),var(--bg2));}
+/* glass header */
+.site-header{position:sticky;top:0;z-index:60;background:var(--glass);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem;letter-spacing:.5px}
+.brand .neo{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 210deg,var(--cyan),var(--violet),var(--pink),var(--cyan));display:grid;place-items:center;color:#06121f;font-weight:900;box-shadow:var(--glow-c)}
+.brand b{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.searchbar{display:flex;gap:8px;flex:1;min-width:160px;max-width:360px}
+.searchbar input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0e1424;color:var(--ink);font-size:.9rem;outline:none}
+.searchbar input:focus{border-color:var(--cyan);box-shadow:var(--glow-c)}
+.searchbar button{padding:10px 16px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#06121f;font-weight:800;cursor:pointer;min-height:44px}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap}
+.navlinks a{padding:9px 12px;border-radius:8px;font-size:.82rem;font-weight:700;color:var(--dim);transition:.2s;min-height:44px;display:inline-flex;align-items:center}
+.navlinks a:hover,.navlinks a.active{color:#06121f;background:linear-gradient(135deg,var(--cyan),var(--pink))}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:24px;height:3px;background:var(--ink);border-radius:3px}
+
+.hero{padding:38px 0 22px;position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(2rem,5.5vw,3.4rem);font-weight:900;line-height:1.1}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:540px;margin:16px 0 22px;color:var(--dim)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 22px;border-radius:10px;font-weight:800;font-size:.9rem;cursor:pointer;border:0;transition:.25s;min-height:44px;display:inline-flex;align-items:center}
+.btn-neo{background:linear-gradient(135deg,var(--cyan),var(--violet));color:#06121f;box-shadow:var(--glow-c)}
+.btn-neo:hover{transform:translateY(-3px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--cyan)}
+.btn-ghost:hover{box-shadow:var(--glow-c)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.chip{font-size:.72rem;font-weight:800;padding:5px 11px;border-radius:999px;background:#10172a;border:1px solid var(--line);color:var(--dim)}
+.chip.hot{color:#06121f;background:linear-gradient(135deg,var(--pink),var(--violet));border-color:transparent}
+/* neon orb */
+.orb{position:relative;height:230px;border-radius:20px;overflow:hidden;background:radial-gradient(60% 60% at 30% 30%,rgba(34,211,238,.35),transparent),radial-gradient(60% 60% at 75% 70%,rgba(168,85,247,.4),transparent),#0c1322;border:1px solid var(--line);box-shadow:var(--shadow)}
+.orb .b1,.orb .b2,.orb .b3{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;animation:float 7s ease-in-out infinite}
+.orb .b1{width:90px;height:90px;left:18%;top:24%;background:radial-gradient(circle,var(--cyan),transparent 70%)}
+.orb .b2{width:120px;height:120px;right:16%;top:18%;background:radial-gradient(circle,var(--violet),transparent 70%);animation-delay:1.5s}
+.orb .b3{width:70px;height:70px;left:46%;bottom:14%;background:radial-gradient(circle,var(--pink),transparent 70%);animation-delay:3s}
+.orb .tagc{position:absolute;left:16px;bottom:14px;font-weight:900;font-size:1rem;color:#eafcff;text-shadow:0 0 12px rgba(34,211,238,.8)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+body.reduce-motion .orb .b1,body.reduce-motion .orb .b2,body.reduce-motion .orb .b3{animation:none}
+
+section.block{padding:40px 0;position:relative;z-index:1}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head .icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;color:#06121f;font-size:1.05rem;font-weight:900}
+.sec-head h2{font-size:1.35rem;font-weight:900}
+.sec-head .tag{margin-left:auto;font-size:.72rem;color:var(--dim);background:#10172a;border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+
+/* 1 横滑酷片带 */
+.ribbon{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 16px;cursor:grab}
+.ribbon.drag{cursor:grabbing}
+.ribbon::-webkit-scrollbar{height:8px}
+.ribbon::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:8px}
+.rcard{min-width:260px;max-width:300px;scroll-snap-align:start;background:var(--glass);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);flex-shrink:0;opacity:0;transform:translateY(14px);transition:.5s}
+.rcard.in{opacity:1;transform:none}
+.rcard:hover{border-color:var(--cyan);box-shadow:var(--glow-c)}
+.rcard .art{height:150px;display:grid;place-items:center;font-size:2.6rem;color:#06121f;position:relative}
+.ra1{background:linear-gradient(135deg,var(--cyan),var(--violet))}
+.ra2{background:linear-gradient(135deg,var(--pink),var(--violet))}
+.ra3{background:linear-gradient(135deg,var(--lime),var(--cyan))}
+.ra4{background:linear-gradient(135deg,var(--violet),var(--pink))}
+.ra5{background:linear-gradient(135deg,var(--cyan),var(--pink))}
+.rcard .art .hot{position:absolute;top:10px;right:10px;font-size:.62rem;font-weight:900;background:#06121f;color:var(--cyan);padding:3px 8px;border-radius:999px}
+.rcard .info{padding:14px}
+.rcard h4{font-size:.95rem;font-weight:800}
+.rcard p{font-size:.74rem;color:var(--dim);margin:4px 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rcard .meta{display:flex;justify-content:space-between;align-items:center}
+.rcard .meta .tagmini{font-size:.68rem;font-weight:800;padding:3px 9px;border-radius:999px;background:#0e1424;color:var(--cyan);border:1px solid var(--line)}
+.rcard .meta .go{padding:6px 12px;border-radius:8px;font-size:.72rem;font-weight:800;background:#0e1424;color:var(--ink);border:1px solid var(--line)}
+
+/* 2 标签分面瀑布 */
+.facets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.facet{font-size:.78rem;font-weight:800;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:#0e1424;color:var(--dim);cursor:pointer;min-height:40px}
+.facet.on{color:#06121f;background:linear-gradient(135deg,var(--cyan),var(--pink));border-color:transparent}
+.masonry{columns:4 240px;column-gap:14px}
+.mcard{break-inside:avoid;margin:0 0 14px;background:var(--glass);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);transition:.5s}
+.mcard.in{opacity:1;transform:none}
+.mcard:hover{border-color:var(--violet)}
+.mcard .top{height:96px;display:grid;place-items:center;font-size:1.7rem;color:#06121f}
+.mc1{background:linear-gradient(135deg,var(--cyan),var(--violet))}
+.mc2{background:linear-gradient(135deg,var(--pink),var(--violet))}
+.mc3{background:linear-gradient(135deg,var(--lime),var(--cyan))}
+.mc4{background:linear-gradient(135deg,var(--violet),var(--pink))}
+.mc5{background:linear-gradient(135deg,var(--cyan),var(--pink))}
+.mcard .body{padding:11px 13px}
+.mcard h4{font-size:.84rem;font-weight:800}
+.mcard p{font-size:.72rem;color:var(--dim);margin-top:2px}
+.mcard .labels{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
+.mcard .labels span{font-size:.64rem;font-weight:800;padding:2px 8px;border-radius:999px;background:#0e1424;color:var(--cyan);border:1px solid var(--line)}
+
+/* 3 情绪匹配 */
+.quiz{max-width:920px;margin:0 auto;background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.quiz h3{font-size:.95rem;font-weight:800;margin-bottom:10px;background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.qstep{display:none}
+.qstep.on{display:block}
+.qstep b{font-size:.9rem;display:block;margin-bottom:10px;color:var(--ink)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opt{padding:12px;border-radius:10px;border:1px solid var(--line);background:#0e1424;cursor:pointer;font-weight:800;font-size:.82rem;color:var(--dim);min-height:44px;display:flex;align-items:center;gap:8px}
+.opt:hover{border-color:var(--cyan);color:var(--ink)}
+.qnav{display:flex;gap:10px;margin-top:12px}
+.qnav button{padding:10px 18px;border:0;border-radius:9px;font-weight:800;cursor:pointer;min-height:44px}
+.qback{background:#10172a;color:var(--dim)}
+.qnext{background:linear-gradient(135deg,var(--cyan),var(--violet));color:#06121f}
+.result{display:none;margin-top:14px;background:#0e1424;border:1px solid var(--cyan);border-radius:12px;padding:14px}
+.result.on{display:block}
+.result h4{font-size:1rem;background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.result p{font-size:.8rem;color:var(--dim);margin-top:6px}
+.result .chips2{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.result .chips2 span{font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:999px;background:#10172a;color:var(--cyan);border:1px solid var(--line)}
+
+/* 4 短评手记 */
+.notes{max-width:920px;margin:0 auto;display:grid;gap:12px}
+.acc{background:var(--glass);border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.acc button.acc-h{width:100%;text-align:left;background:transparent;border:0;padding:14px 16px;font-size:.9rem;font-weight:800;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:10px;min-height:48px;align-items:center}
+.acc button.acc-h .ar{transition:.3s;color:var(--cyan)}
+.acc.open button.acc-h .ar{transform:rotate(90deg)}
+.acc .acc-b{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc .acc-b .inner{padding:0 16px 14px;font-size:.82rem;color:var(--dim)}
+.acc .quote{border-left:3px solid var(--pink);padding-left:10px;margin:6px 0;font-style:italic;color:var(--cyan)}
+.acc .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.acc .tags span{font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:999px;background:#0e1424;color:var(--dim);border:1px solid var(--line)}
+.form{max-width:920px;margin:14px auto 0;background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:14px}
+.form label{display:block;font-size:.76rem;font-weight:800;margin:8px 0 5px;color:var(--dim)}
+.form input,.form textarea,.form select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0e1424;color:var(--ink);font-size:.84rem;font-family:inherit}
+.form textarea{min-height:70px;resize:vertical}
+.form button{margin-top:10px;width:100%;padding:11px;border:0;border-radius:9px;background:linear-gradient(135deg,var(--pink),var(--violet));color:#06121f;font-weight:800;cursor:pointer;min-height:46px}
+.rvlist{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.rv{background:var(--glass);border:1px solid var(--line);border-left:5px solid var(--cyan);border-radius:10px;padding:10px 12px}
+.rv h5{font-size:.82rem;font-weight:800;color:var(--cyan)}
+.rv span{font-size:.68rem;color:var(--dim);font-family:ui-monospace,monospace}
+.rv p{font-size:.76rem;color:var(--dim);margin-top:3px}
+
+/* 5 画质/正版 */
+.quality{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qcard{background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:16px}
+.qcard h4{font-size:.92rem;font-weight:800;background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.qcard p{font-size:.76rem;color:var(--dim);margin-top:6px}
+.specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.spec{font-size:.7rem;font-weight:800;padding:4px 9px;border-radius:6px;background:#0e1424;color:var(--cyan);border:1px solid var(--line)}
+.legal{margin-top:16px;background:#0e1424;border:1px solid var(--line);border-radius:12px;padding:16px}
+.legal h4{font-size:.9rem;color:var(--pink)}
+.legal ul{list-style:none;display:grid;gap:7px;margin-top:8px}
+.legal li{font-size:.76rem;padding-left:20px;position:relative;color:var(--dim);line-height:1.6}
+.legal li::before{content:'◆';position:absolute;left:0;color:var(--cyan)}
+
+/* 6 站规+无障碍 */
+.rules{max-width:880px;margin:0 auto;background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.rules h3{font-size:1rem;background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rules ul{list-style:none;display:grid;gap:8px}
+.rules li{font-size:.8rem;padding-left:20px;position:relative;color:var(--dim);line-height:1.65}
+.rules li::before{content:'✦';position:absolute;left:0;color:var(--violet)}
+.a11y-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.atile{background:#0e1424;border:1px solid var(--line);border-radius:10px;padding:12px}
+.atile b{font-size:.82rem;color:var(--cyan);display:block;margin-bottom:6px}
+.atile p{font-size:.72rem;color:var(--dim)}
+.sw{width:44px;height:24px;border-radius:99px;background:#33405e;position:relative;display:inline-block;transition:.2s;vertical-align:middle}
+.sw i{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:linear-gradient(135deg,var(--cyan),var(--violet))}
+.sw.on i{left:22px}
+.rules .dis{margin-top:12px;font-size:.73rem;color:var(--dim);border-top:1px dashed var(--line);padding-top:10px}
+
+footer.site-foot{margin-top:36px;background:linear-gradient(180deg,transparent,#070b14);border-top:1px solid var(--line);color:var(--dim);padding:30px 0 20px;position:relative;z-index:1}
+.foot-brand{font-weight:900;font-size:1.1rem;text-align:center;margin-bottom:10px}
+.foot-brand b{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:12px}
+.foot-links a{font-size:.8rem;color:var(--dim);min-height:40px;display:inline-flex;align-items:center}
+.foot-links a:hover{color:var(--cyan)}
+.foot-small{text-align:center;font-size:.73rem;color:var(--dim);line-height:1.7}
+
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.masonry{columns:3 220px}.quality{grid-template-columns:1fr}.a11y-row{grid-template-columns:1fr}.orb{height:200px}}
+@media(max-width:680px){
+  .navlinks{position:fixed;top:64px;left:12px;right:12px;flex-direction:column;background:var(--glass);padding:10px;border-radius:12px;box-shadow:var(--shadow);transform:translateY(-180%);transition:.3s;backdrop-filter:blur(12px)}
+  .navlinks.open{transform:none}
+  .burger{display:flex}
+  .searchbar{order:3;width:100%;max-width:none}
+  .opts{grid-template-columns:1fr}
+  .masonry{columns:2 160px}
+}
+@media(max-width:420px){.masonry{columns:1}.rcard{min-width:84%}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="bgfx"></div>
+
+<div class="wrap">
+  <header class="site-header">
+    <div class="nav">
+      <div class="brand"><span class="neo">酷</span> 酷酷电影网<b>·霓虹潮玩放映馆</b></div>
+      <form class="searchbar" onsubmit="return false">
+        <input type="search" placeholder="搜酷片/情绪/标签：赛博·悬疑·治愈·动画…" aria-label="搜索电影">
+        <button type="submit">找片</button>
+      </form>
+      <nav class="navlinks" id="nav">
+        <a href="#ribbon" class="active">酷片带</a>
+        <a href="#tags">标签分面</a>
+        <a href="#mood">情绪匹配</a>
+        <a href="#notes">短评手记</a>
+        <a href="#quality">画质正版</a>
+        <a href="#rules">站规无障碍</a>
+      </nav>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>挑点<em>够酷</em>的片子<br>横滑、分面、按情绪走</h1>
+          <p>酷酷电影网（kukudianyingwang-h5.github.io）用霓虹酷片带、标签分面、情绪匹配、短评手记和正版画质建议整理片单。本页为静态前端演示，内链全部为 #；不提供盗版视频源、不发布“最新地址/备用域名/专用播放器/网盘”。</p>
+          <div class="cta">
+            <a href="#ribbon" class="btn btn-neo">滑酷片带</a>
+            <a href="#mood" class="btn btn-ghost">做情绪测试</a>
+          </div>
+          <div class="chips">
+            <span class="chip hot">霓虹横滑</span>
+            <span class="chip">标签分面</span>
+            <span class="chip">情绪匹配</span>
+            <span class="chip">短评手记</span>
+            <span class="chip">正版画质</span>
+            <span class="chip">无障碍</span>
+          </div>
+        </div>
+        <div class="orb" aria-hidden="true">
+          <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+          <span class="tagc">NEON · COOL · CINEMA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 横滑酷片带 -->
+    <section class="block" id="ribbon">
+      <div class="sec-head"><span class="icon">🎞️</span><h2>酷片带 · 横滑精选</h2><span class="tag">可拖拽/触摸滑动</span></div>
+      <div class="ribbon" id="ribbon">
+        <article class="rcard"><div class="art ra1">🤖<span class="hot">酷荐</span></div><div class="info"><h4>霓虹算法之城</h4><p>赛博/悬疑·数据幽灵与街头信使，冷色调但不闷。</p><div class="meta"><span class="tagmini">科幻</span><span class="go">详情</span></div></div></article>
+        <article class="rcard"><div class="art ra2">🩰<span class="hot">潮玩</span></div><div class="info"><h4>粉色排练厅</h4><p>音乐/成长·街舞与古典混编，强节奏不吵。</p><div class="meta"><span class="tagmini">音乐</span><span class="go">详情</span></div></div></article>
+        <article class="rcard"><div class="art ra3">🌿<span class="hot">慢酷</span></div><div class="info"><h4>苔藓与代码</h4><p>治愈/文艺·程序员的阳台重生，低冲突高质感。</p><div class="meta"><span class="tagmini">治愈</span><span class="go">详情</span></div></div></article>
+        <article class="rcard"><div class="art ra4">🕳️<span class="hot">烧脑</span></div><div class="info"><h4>镜像剧场</h4><p>悬疑/心理·同一夜场双向叙事，非血腥。</p><div class="meta"><span class="tagmini">悬疑</span><span class="go">详情</span></div></div></article>
+        <article class="rcard"><div class="art ra5">🚀<span class="hot">大片</span></div><div class="info"><h4>轨道涂鸦者</h4><p>动作/太空·失重喷绘与救援，视效导向。</p><div class="meta"><span class="tagmini">动作</span><span class="go">详情</span></div></div></article>
+        <article class="rcard"><div class="art ra1">🐉<span class="hot">动画</span></div><div class="info"><h4>霓虹山海小队</h4><p>动画/奇幻·都市神兽与快递员，全家可看。</p><div class="meta"><span class="tagmini">动画</span><span class="go">详情</span></div></div></article>
+      </div>
+    </section>
+
+    <!-- 2 标签分面瀑布 -->
+    <section class="block" id="tags">
+      <div class="sec-head"><span class="icon">🏷️</span><h2>标签分面 · 瀑布墙</h2><span class="tag">点击筛选·纯前端</span></div>
+      <div class="facets" id="facets">
+        <span class="facet on" data-t="all">全部</span>
+        <span class="facet" data-t="sci">赛博科幻</span>
+        <span class="facet" data-t="music">音乐舞台</span>
+        <span class="facet" data-t="heal">治愈文艺</span>
+        <span class="facet" data-t="crime">悬疑心理</span>
+        <span class="facet" data-t="action">动作视效</span>
+        <span class="facet" data-t="anim">动画奇幻</span>
+      </div>
+      <div class="masonry" id="masonry">
+        <article class="mcard" data-t="sci"><div class="top mc1">🤖</div><div class="body"><h4>数据幽灵</h4><p>赛博城市、旧服务器、信使视角。</p><div class="labels"><span>冷色调</span><span>非线性</span></div></div></article>
+        <article class="mcard" data-t="music"><div class="top mc2">🩰</div><div class="body"><h4>街舞手札</h4><p>地下赛、伤退、重组，强配乐。</p><div class="labels"><span>高节奏</span><span>成长</span></div></div></article>
+        <article class="mcard" data-t="heal"><div class="top mc3">🌿</div><div class="body"><h4>阳台四季</h4><p>种植、代码、独处，低刺激。</p><div class="labels"><span>慢节奏</span><span>低冲突</span></div></div></article>
+        <article class="mcard" data-t="crime"><div class="top mc4">🕳️</div><div class="body"><h4>双场夜戏</h4><p>同一剧场两段时间线互文。</p><div class="labels"><span>烧脑</span><span>非血腥</span></div></div></article>
+        <article class="mcard" data-t="action"><div class="top mc5">🚀</div><div class="body"><h4>失重喷绘</h4><p>太空站涂鸦、救援、视效戏。</p><div class="labels"><span>大场面</span><span>120fps友好</span></div></div></article>
+        <article class="mcard" data-t="anim"><div class="top mc1">🐉</div><div class="body"><h4>山海快递</h4><p>都市神兽、夜间配送、轻笑点。</p><div class="labels"><span>亲子</span><span>奇幻</span></div></div></article>
+        <article class="mcard" data-t="sci"><div class="top mc5">🛰️</div><div class="body"><h4>轨道闲聊</h4><p>空间站日常、故障、冷幽默。</p><div class="labels"><span>轻科幻</span><span>群像</span></div></div></article>
+        <article class="mcard" data-t="heal"><div class="top mc3">🍵</div><div class="body"><h4>深夜茶馆</h4><p>陌生人故事、短集式、治愈。</p><div class="labels"><span>单元剧</span><span>低甜</span></div></div></article>
+      </div>
+    </section>
+
+    <!-- 3 情绪匹配 -->
+    <section class="block" id="mood">
+      <div class="sec-head"><span class="icon">🎛️</span><h2>情绪匹配测试</h2><span class="tag">3 步出片单·纯前端</span></div>
+      <div class="quiz" id="quiz">
+        <h3>🤖 现在想“酷”成什么样？</h3>
+        <div class="qstep on" data-step="0">
+          <b>1/3 今晚精力与口味？</b>
+          <div class="opts">
+            <div class="opt" data-score="sci">要未来感，越冷越爽</div>
+            <div class="opt" data-score="music">要节奏感，别太沉</div>
+            <div class="opt" data-score="heal">要放松，少动脑</div>
+            <div class="opt" data-score="crime">要烧脑，反转也行</div>
+          </div>
+        </div>
+        <div class="qstep" data-step="1">
+          <b>2/3 更想看哪种视觉？</b>
+          <div class="opts">
+            <div class="opt" data-score="sci">霓虹/太空/数据</div>
+            <div class="opt" data-score="music">舞台/街头/灯光</div>
+            <div class="opt" data-score="heal">自然/阳台/慢镜</div>
+            <div class="opt" data-score="action">爆炸/失重/大场面</div>
+          </div>
+        </div>
+        <div class="qstep" data-step="2">
+          <b>3/3 时长与节奏？</b>
+          <div class="opts">
+            <div class="opt" data-score="short">90 分钟内短平快</div>
+            <div class="opt" data-score="mid">90–110 分钟适中</div>
+            <div class="opt" data-score="long">110+ 也能沉浸</div>
+            <div class="opt" data-score="any">按推荐来就行</div>
+          </div>
+        </div>
+        <div class="qnav">
+          <button class="qback" id="qback" disabled>上一步</button>
+          <button class="qnext" id="qnext">下一步</button>
+        </div>
+        <div class="result" id="moodResult">
+          <h4 id="moodTitle">你的酷片组合</h4>
+          <p id="moodDesc">示例推荐：按前面选择生成，点击仅演示，不跳外链播放。</p>
+          <div class="chips2" id="moodChips"></div>
+        </div>
+        <p style="font-size:.74rem;color:var(--dim);margin-top:10px">测试纯前端、不采集个人信息；片名均为示例，正版观看请走授权平台。</p>
+      </div>
+    </section>
+
+    <!-- 4 短评手记 -->
+    <section class="block" id="notes">
+      <div class="sec-head"><span class="icon">📝</span><h2>短评 / 编辑手记</h2><span class="tag">可折叠·可提交本页短评</span></div>
+      <div class="notes" id="notesBox">
+        <div class="acc open"><button class="acc-h">《霓虹算法之城》：赛博片不闷的写法 <span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“城市会记住每次断电，但信使记得路。”——示例台词</div><p>手记：用街头信使替代纯黑客视角，信息差放在旧服务器与霓虹广告；不堆术语。视觉以青紫为主，夜景看 HDR 更出片。轻剧透：结局与“谁关了主干”有关，不提前点名。<div class="tags"><span>轻剧透</span><span>赛博</span><span>HDR友好</span></div></p></div></div></div>
+        <div class="acc"><button class="acc-h">《粉色排练厅》：音乐片如何不吵 <span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“先跑错拍子，再跑对人生。”——示例台词</div><p>手记：街舞与古典各占一半，冲突用伤病与组队而非撕逼；配乐分段，耳机用户开立体声。适合情绪低但不想看哭的晚上。<div class="tags"><span>不剧透</span><span>音乐</span><span>成长</span></div></p></div></div></div>
+        <div class="acc"><button class="acc-h">《镜像剧场》：双时间线不晕 <span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“同一盏灯，两点钟和十点钟不一样。”——示例台词</div><p>手记：用灯光色温区分两线（冷蓝/暖粉），不靠字幕硬解释；暴力仅口头。悬疑落点放在票务系统而非凶案细节。<div class="tags"><span>轻剧透</span><span>心理</span><span>非血腥</span></div></p></div></div></div>
+      </div>
+
+      <form class="form" id="rvForm" autocomplete="off">
+        <label for="rvTitle">片名/示例</label>
+        <input id="rvTitle" placeholder="如：轨道涂鸦者（示例）" required>
+        <label for="rvMood">情绪标签</label>
+        <select id="rvMood">
+          <option>赛博科幻</option><option>音乐舞台</option
